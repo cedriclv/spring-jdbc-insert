@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class SchoolController {
@@ -14,10 +15,9 @@ public class SchoolController {
 
     @PostMapping("/school/create")
     public String postSchool(Model model,
-                             @RequestParam String name,
-                             @RequestParam Long capacity,
-                             @RequestParam String country
-    ) {
+            @RequestParam String name,
+            @RequestParam Long capacity,
+            @RequestParam String country) {
         model.addAttribute("school", repository.save(name, capacity, country));
 
         return "school_get";
